@@ -28,6 +28,8 @@ public class TextManager : MonoBehaviour
     public int count;
 
     public int min, max;
+
+    public Animator tutorialAnim;
    
 
     // Start is called before the first frame update
@@ -35,7 +37,7 @@ public class TextManager : MonoBehaviour
     {
         instance = this;
 
-
+        tutorialAnim = GameObject.FindGameObjectWithTag("Tutorial").GetComponent<Animator>();
     }
 
     

@@ -18,7 +18,6 @@ public class MouseDrag : MonoBehaviour
     public GameObject[] objectsArray; // reference to the array of objects
     public GameObject excludedObject; // reference to the object to be excluded
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +27,7 @@ public class MouseDrag : MonoBehaviour
         endTrigger = FindObjectOfType<EndTrigger>();
         objectsArray = GameObject.FindGameObjectsWithTag("Petal");
         excludedObject = this.gameObject;
+  
     }
 
     private void Update()
@@ -50,6 +50,8 @@ public class MouseDrag : MonoBehaviour
 
             TextManager.instance.textAnim.SetBool("Fadein", true);
             TextManager.instance.textAnim.SetBool("Fadeout", false);
+            if (TextManager.instance.endLeave == 0)
+                TextManager.instance.tutorialAnim.SetBool("FadeOut 0", true);
         }
 
 
@@ -66,6 +68,8 @@ public class MouseDrag : MonoBehaviour
             transform.position = MouseWorldPosition() + offset;
             TextManager.instance.textAnim.SetBool("Fadein", true);
             TextManager.instance.textAnim.SetBool("Fadeout", false);
+            if (TextManager.instance.endLeave == 0)
+                TextManager.instance.tutorialAnim.SetBool("FadeOut 0", true);
         }
 
     }
@@ -83,6 +87,7 @@ public class MouseDrag : MonoBehaviour
         rb.useGravity = true;
         //textManager.textAnim.SetTrigger("FadeOut");
         stopPickUp = true;
+        TextManager.instance.tutorialAnim.SetBool("FadeOut 0", false);
 
         for (int i = 0; i < objectsArray.Length; i++)
         {

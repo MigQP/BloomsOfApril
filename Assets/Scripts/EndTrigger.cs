@@ -13,6 +13,7 @@ public class EndTrigger : MonoBehaviour
 
     public GameObject[] objectsArray;
 
+    public GameObject tutorialObj;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +39,7 @@ public class EndTrigger : MonoBehaviour
         if (TextManager.instance.endLeave == 12)
         {
             TextManager.instance.animPostProcessing.FadeOut();
-
+            //tutorialObj.SetActive(false);
             //TextManager.instance.mainMenuPanelAnim.SetTrigger("FadeIn");
             GameManager.instance.LockCanMovePetals();
             var myNewSmoke = Instantiate(petals, new Vector3(sunflower.transform.position.x, sunflower.transform.position.y, sunflower.transform.position.z), sunflower.transform.rotation);
