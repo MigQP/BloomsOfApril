@@ -30,7 +30,7 @@ public class EndTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        textManager.textAnim.SetTrigger("FadeOut");
+        
         TextManager.instance.textAnim.SetBool("Fadein", false);
         TextManager.instance.textAnim.SetBool("Fadeout", true);
         TextManager.instance.endLeave++;
@@ -38,7 +38,8 @@ public class EndTrigger : MonoBehaviour
         if (TextManager.instance.endLeave == 12)
         {
             TextManager.instance.animPostProcessing.FadeOut();
-            TextManager.instance.mainMenuPanelAnim.SetTrigger("FadeIn");
+
+            //TextManager.instance.mainMenuPanelAnim.SetTrigger("FadeIn");
             GameManager.instance.LockCanMovePetals();
             var myNewSmoke = Instantiate(petals, new Vector3(sunflower.transform.position.x, sunflower.transform.position.y, sunflower.transform.position.z), sunflower.transform.rotation);
             myNewSmoke.transform.parent = sunflower.transform;
@@ -51,13 +52,14 @@ public class EndTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        textManager.textAnim.SetTrigger("FadeOut");
+        
         Destroy(other.gameObject);
         //objectsArray = GameObject.FindGameObjectsWithTag("Petal");
         if (TextManager.instance.endLeave != 12)
 
             for (int i = 0; i < objectsArray.Length; i++)
             {
+                if (objectsArray[i].GetComponent<MouseDrag>() == null)
                 objectsArray[i].AddComponent<MouseDrag>();
             }
     }

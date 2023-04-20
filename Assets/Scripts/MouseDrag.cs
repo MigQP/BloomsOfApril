@@ -47,8 +47,9 @@ public class MouseDrag : MonoBehaviour
             offset = transform.position - MouseWorldPosition();
             //TextManager.instance.leaveCount++;
             //TextManager.instance.textAnim.SetTrigger("FadeIn");
-      
 
+            TextManager.instance.textAnim.SetBool("Fadein", true);
+            TextManager.instance.textAnim.SetBool("Fadeout", false);
         }
 
 
